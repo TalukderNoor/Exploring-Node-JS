@@ -1,4 +1,5 @@
 var http = require("http");
+var URL = require("url");
 
 //------first node server code
 /*
@@ -11,7 +12,7 @@ console.log("Server run succesfully");
 */
 
 //------Request Respond Model
-
+/*
 var server = http.createServer(function (req, res) {
     if (req.url == "/") {
         res.writeHead(200, {
@@ -36,3 +37,30 @@ var server = http.createServer(function (req, res) {
 
 server.listen(5050);
 console.log("Server run succesfully");
+*/
+
+//------URL module
+
+var server = http.createServer(function (req, res) {
+    var url = "http://demo.com/index.html?year=2023&monyh=April";
+    var urlObj = URL.parse(url, true);
+
+    var hostName = urlObj.host;
+    var pathName = urlObj.pathname;
+    var search = urlObj.search;
+
+    res.writeHead(200, {
+        "Content-Type": "text/html",
+    });
+
+    res.write("URL:" + url +"</br>")
+    res.write("Host:" + hostName+"</br>");
+    res.write("path:" + pathName+"</br>");
+    res.write("search" + search+"</br>");
+
+    res.end();
+
+});
+
+server.listen(5000);
+console.log("server run successfully");
