@@ -1,6 +1,5 @@
 var http = require("http");
 var URL = require("url");
-var fs=require("fs")
 
 //------first node server code
 /*
@@ -41,7 +40,7 @@ console.log("Server run succesfully");
 */
 
 //------URL module
-/*
+
 var server = http.createServer(function (req, res) {
     var url = "http://demo.com/index.html?year=2023&monyh=April";
     var urlObj = URL.parse(url, true);
@@ -65,21 +64,3 @@ var server = http.createServer(function (req, res) {
 
 server.listen(5000);
 console.log("server run successfully");
-*/
-
-//------File read Synchronous
-
-var server=http.createServer(function(req,res){
-    if (req.url=="/"){
-        fs.readFile("Home.html",function(err,data){
-            res.writeHead(200,{
-                "Content-Type": "text/html",
-            });
-            res.write(data);
-            res.end();
-        });
-    }
-})
-
-server.listen(5000);
-console.log("Server run successfully")
