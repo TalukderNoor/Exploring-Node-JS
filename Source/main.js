@@ -64,3 +64,41 @@ var server = http.createServer(function (req, res) {
 
 server.listen(5000);
 console.log("server run successfully");
+
+
+//------File read Asynchronous
+
+/*
+var server=http.createServer(function(req,res){
+    if (req.url=="/"){
+        fs.readFile("Home.html",function(err,data){
+            res.writeHead(200,{
+                "Content-Type": "text/html",
+            });
+            res.write(data);
+            res.end();
+        });
+    }
+})
+
+server.listen(5000);
+console.log("Server run successfully")
+*/
+
+//------File read Synchronous
+var server=http.createServer(function(req,res){
+    if (req.url=="/"){
+
+        var data=fs.readFile("Home.html")
+        res.writeHead(200,{
+            "Content-Type": "text/html",
+        });
+        res.write(data);
+        res.end();
+    }
+})
+
+server.listen(5000);
+console.log("Server run successfully")
+
+
